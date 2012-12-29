@@ -89,6 +89,7 @@ public class MBMailMessage {
 
 			if (matcher.find()) {
 				_plainBody = plainBody.substring(0, matcher.start());
+				_plainBody = _plainBody.trim();
 			}
 			else {
 				_plainBody = plainBody;
@@ -134,17 +135,17 @@ public class MBMailMessage {
 				_FORMATTED_DATE_REGEX + ")";
 
 	private static final String _HEADER_DATE_TIME_REGEX =
-		"(?:(?:date)|(?:sent)|(?:time)):\\s*"+ _FORMATTED_DATE_TIME_REGEX +
-			".*\n";
+		"(?:(?:date)|(?:sent)|(?:time)):\\s*("+ _FORMATTED_DATE_TIME_REGEX +
+			").*\r\n";
 
 	private static final String _HEADER_SUBJECT_ADDRESS_REGEX =
-		"((?:from)|(?:subject)|(?:b?cc)|(?:to))|:.*\n";
+		"((?:from)|(?:subject)|(?:b?cc)|(?:to)):.*\r\n";
 
 	private static final String _QUOTE_GMAIL_REGEX =
 		"(On\\s+" + _FORMATTED_DATE_TIME_REGEX + ".*wrote:\n)";
 
 	private static final String _QUOTE_LINE_REGEX =
-		"-+\\s*(?:Original(?:\\sMessage)?)?\\s*-+\n";
+		"[-,_]+\\s*(?:Original(?:\\sMessage)?)?\\s*[-,_]+\r\n\\s*";
 
 	private static final Pattern _QUOTE_TEXT_BEGINNING =
 		Pattern.compile("(?i)(?:(?:" + _QUOTE_LINE_REGEX + ")?(?:(?:" +
