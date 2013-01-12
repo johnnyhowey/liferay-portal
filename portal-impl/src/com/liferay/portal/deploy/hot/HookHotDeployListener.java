@@ -2601,6 +2601,7 @@ public class HookHotDeployListener
 		"layout.form.add", "layout.form.update", "layout.set.form.update",
 		"layout.static.portlets.all", "layout.types",
 		"login.form.navigation.post", "login.form.navigation.pre",
+		"message.boards.email.reply.sanitizers",
 		"organizations.form.add.identification", "organizations.form.add.main",
 		"organizations.form.add.miscellaneous",
 		"portlet.add.default.resource.check.whitelist",
