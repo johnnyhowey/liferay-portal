@@ -19,7 +19,6 @@ import aQute.bnd.annotation.ProviderType;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.util.HtmlUtil;
-import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.model.UserNotificationEvent;
@@ -82,21 +81,20 @@ public abstract class BaseModelUserNotificationHandler
 			return null;
 		}
 
-		String title = getTitle(jsonObject, assetRenderer, serviceContext);
-
-		StringBundler sb = new StringBundler(5);
-
-		sb.append("<div class=\"title\">");
-		sb.append(title);
-		sb.append("</div><div class=\"body\">");
+		String body = getNotificationTemplate();
 
 		String entryTitle = jsonObject.getString("entryTitle");
 
-		sb.append(HtmlUtil.escape(StringUtil.shorten(entryTitle), 50));
+		String title = getTitle(jsonObject, assetRenderer, serviceContext);
 
-		sb.append("</div>");
+		body = StringUtil.replace(
+				body, new String[] {"[$TITLE$]", "[$BODY$]"},
+				new String[] {
+					title, HtmlUtil.escape(StringUtil.shorten(entryTitle), 50)
+				}
+			);
 
-		return sb.toString();
+		return body;
 	}
 
 	@Override
