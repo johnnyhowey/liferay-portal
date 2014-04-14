@@ -83,14 +83,13 @@ public abstract class BaseModelUserNotificationHandler
 
 		String body = getNotificationTemplate();
 
-		String entryTitle = jsonObject.getString("entryTitle");
-
-		String title = getTitle(jsonObject, assetRenderer, serviceContext);
-
 		body = StringUtil.replace(
 				body, new String[] {"[$TITLE$]", "[$BODY$]"},
 				new String[] {
-					title, HtmlUtil.escape(StringUtil.shorten(entryTitle), 50)
+					getTitle(jsonObject, assetRenderer, serviceContext),
+					HtmlUtil.escape(
+						StringUtil.shorten(jsonObject.getString("entryTitle")),
+						50)
 				}
 			);
 
