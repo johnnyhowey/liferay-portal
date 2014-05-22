@@ -136,9 +136,6 @@ public class PortletKeys {
 
 	public static final String MEDIA_GALLERY_DISPLAY = "31";
 
-	public static final String MEMBERSACTIVITIES =
-		"8_WAR_socialnetworkingportlet";
-
 	public static final String MESSAGE_BOARDS = "19";
 
 	public static final String MESSAGE_BOARDS_ADMIN = "162";
@@ -244,6 +241,9 @@ public class PortletKeys {
 	public static final String SITES_DIRECTORY = "184";
 
 	public static final String SOCIAL_ACTIVITY = "179";
+
+	public static final String SOCIAL_NETWORKING_MEMBERS_ACTIVITIES =
+		"8_WAR_socialnetworkingportlet";
 
 	public static final String SOFTWARE_CATALOG = "98";
 

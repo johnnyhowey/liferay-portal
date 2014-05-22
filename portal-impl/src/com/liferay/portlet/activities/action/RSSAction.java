@@ -138,13 +138,15 @@ public class RSSAction extends com.liferay.portal.struts.RSSAction {
 				PortalUtil.getLayoutFullURL(themeDisplay) +
 					Portal.FRIENDLY_URL_SEPARATOR + "activities/rss";
 		}
-		else if (portletId.equals(PortletKeys.MEMBERSACTIVITIES)) {
+		else if (portletId.equals(
+					PortletKeys.SOCIAL_NETWORKING_MEMBERS_ACTIVITIES)) {
+
 			link =
 				PortalUtil.getLayoutFullURL(themeDisplay) +
 					Portal.FRIENDLY_URL_SEPARATOR + "members_activities/rss";
 		}
 		else {
-			_log.error("initialize rss link fail");
+			_log.error("RSS directory not found for portlet " + portletId);
 		}
 
 		selfSyndLink.setHref(link);
